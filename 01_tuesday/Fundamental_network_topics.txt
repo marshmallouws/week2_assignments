@@ -1,0 +1,77 @@
+Fundamental Network Topics
+• What is your public IP address right now, and how did you find it?
+	o 93.176.67.188
+	o https://whatismyipaddress.com/
+
+• What is your private IP address right now (do this both at home and in school), and who/what gave you that address?
+	o Type ipconfig in CMD or git bash
+	o 192.168.0.105 
+	o The DHCP (Dynamic Host Configuration Protocol) server is responsible for giving out IP-addresses. DHCP also tells which subnet we’re on and what our default gateway is etc.
+
+• What’s special about these address ranges? 
+	o Following IP-addresses are private which are used for internal networks in for example: households and companies.
+	o 10.0.0.0 – 10.255.255.255 (Class a)
+	o 172.16.0.0 – 172.31.255.255 (Class b)
+	o 192.168.0.0 – 192.168.255.255 (Class c)
+		 192.168 is defined to only be used as a class c network.
+		 Class c has a low range of host IP-addresses which is seen by the range. Only the last two numbers can range. A range in the second last number shows that it is two different networks so 192.168.1.0 and 192.168.2.0 are two different networks. 
+		 All households run on class c.
+
+• What’s special about this IP-address: 127.0.0.1?
+	o 127.0.0.1 is a special-purpose IPv4 address called localhost or loopback address. This means that all computers use this as their own, but it doesn’t let them communicate with other devices as a real IP address does. When using this IP, one can type localhost instead which is translated by a DNS.
+
+• What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?
+	o List of common network port numbers
+		 https://www.utilizewindows.com/list-of-common-network-port-numbers/
+	o 22: SSH – secure logins, file transfers (scp, sftp) and port forwarding
+	o 23: Telnet – unencrypted text communication
+	o 25: SMTP – used for email routing between mail servers
+	o 53: DNS
+	o 80: HTTP
+	o 443: HTTPS
+
+• What is the IP address of studypoints.dk and how did you find it?
+	o 165.227.137.75
+	o Write ping studypoints.dk in CMD
+
+• If you write https://studypoints.dk in your browser, how did “it” figure out that it should go to the IP address you discovered above?
+	o When requesting a webpage in a browser, your computer contacts a DNS. First, it sees if the webpage is cached on your router, and if not, it contacts your ISP’s DNS. It keeps contacting DNS-servers until it finds one that knows the name or returns an error message. 
+
+• Explain shortly the purpose of an IP-address and a port-number and why we need both
+	o The IP address is the location of the device whereas port number is the method of communication. An example of ports could be the communication that goes through the browser; every time we request a service through the browser, it knows that it must listen to port 80 or 443 whereas other services would listen on other ports. Another example is SSH which uses port 22 so every time we use vagrant ssh or ssh into our server, it uses this port. 
+
+• What is your (nearest) DNS server?
+	o Some routers have a DNS, however, if this is not the case, the nearest is your ISP. 
+
+• What is (conceptually) the DNS system and the purpose with a DNS Server?
+	o The DNS is basically a key-value-pair server with names and IPs of webpages. It translates names into IP-addresses: When requesting a web page by name such as dr.dk, the DNS translates this. 
+	o If you know the IP of the requested webpage, you can write this in the browser and the step to use DNS will be skipped.
+
+• What is your current Gateway, and how did you find it?
+	o Default gateway is the IP of the router.
+	o Every time we make a network request, the computer (network card) throws the request to our default gateway as the computer itself doesn’t know what to do with it. This request is passed on until a device can handle the request and thereby sends a response.
+
+• What is the address of your current DHCP-Server, and how did you find it?
+	o 192.168.0.1
+	o In CMD write ipconfig /all and find the value of DHCP server
+
+• Explain (conceptually) about the TCP/IP-protocol stack
+	o When requesting a web page or sending a mail, the data that is transferred back is packing in IP-package. TCP (Transmission Control Protocol) is responsible for gathering the packages in the right order and resending lost packages.
+	o TCP/IP Model
+		 Network Access Layer (Physical)
+			•This is the hardware part of the network such as router, network card, cables etc.
+
+		 Internet layer (Network)
+			• This defines the protocols which are responsible for logical transmission of data over the entire network. The main protocols are following IP, ICMP (Internet Control Message Protocol), ARP (Address Resolution Protocol)
+		
+		 Host-to-host (Transport)
+			• Responsible for the end-to-end communication and error-free delivery of data. The two main protocols are following: TCP and UDP. 
+		
+		 Process layer (Application)
+			• It is responsible for communication between units hereunder browsers and servers. Protocols: HTTP, HTTPS, SSH, NTP (Network Time Protocol)
+
+
+• Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)
+	o HTTP is the foundation of data communication on the internet and its sole purpose is to send text. It functions as a request-response protocol so when you request something in your browser by clicking a link or writing the name of a webpage you submit a HTTP request. The server then returns a response to the client.
+
+• Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
