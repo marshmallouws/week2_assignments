@@ -1,0 +1,73 @@
+Ex1 + Ex2
+	Status codes
+	200: OK - request fulfilled
+	302: Redirect 
+	304: Not modified - data not modified on the server, cached file
+
+	Connection: Keep-alive
+		This means that the same TCP-connection is kept alive for multiple requests.
+		If keep-alive is disabled, there would be established a new TCP connection for
+		each request.
+
+Ex3
+	When using response.sendRedirect("r.html"); in the servlet, it knows where to redirect to
+	as it is predefined. When looking at the network tab the first request is to the 
+	"redirect"-servlet which respones 302 (Redirect) whereas next request is a request for the
+	page that is redirected to which returns s 200-response. The field "Initiator" shows that
+	it is "redirect" that redirected to this page.
+
+Ex3a
+	301: Move permanently. 
+	It is requested to go to http://studypoints.info, however, the page 
+	is set to move permanently to https://studypoints.info/#/view1. When looking at the second
+	request, the field "Initiator" shows the page we're redirected from.
+
+Ex4a
+	500: The server encountered an unexpected condition which prevented it from fulfilling the 
+	request.
+
+Ex4b
+	404: The requested resource does not exist.
+
+Ex4c
+	Error code prefix
+	2: Successful responses
+	3: Redirects
+	4: Client errors
+	5: Server errors
+
+Ex5
+	See HeaderInfo.java in package: servlets.
+
+Ex6
+	<form action="#"> means that it should stay on the same page.
+	When using method="GET", the parameters are passed using the URL and it is used to get data
+	from the server. When using method="POST" you send data to the server and the URL is not changed.
+
+	Looking at Network -> Headers there's a difference between "Request URL" and the last data box.
+	POST provides a data box called "Form data" whereas GET provides a box called "Query String parameters"
+
+	URL
+	GET: http://localhost:8080/02_wednesday_network/nameinput.html?first=Annika&last=Ehlers&hidden=12345678
+	POST: http://localhost:8080/02_wednesday_network/nameinput.html
+
+Ex7
+	The code, that is handed out in the assignment, sets a session. This means that the client saves some
+	data that is used for following HTTP-request; when making a new HTTP-request, the cookie is sent along
+	with the request.
+	
+	HTTP is stateless, which means it doesn't save information
+	it only sends it. Therefore, we can use either cookies or request parameters to save state. In this case,
+	there's used cookies which can be seen Application -> Cookies in Chrome Developer Tool. The cookie saves
+	"name" and its value so removing the request parameter from the URL (?name=Annika) will still show
+	"Welcome Annika!".
+
+Ex8
+	A session creates a temporary file on the server where it registers session variables and their values.
+	This data is available to all pages during the visit. The session ends whenever the browser is closed or
+	after a given time if the site is closed.
+
+	A cookie creates a file on the client which is stored for future use. This data is send to the server
+	when making a request which the server uses when serving a page.
+
+

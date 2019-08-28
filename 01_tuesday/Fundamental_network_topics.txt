@@ -75,3 +75,4 @@ Fundamental Network Topics
 	o HTTP is the foundation of data communication on the internet and its sole purpose is to send text. It functions as a request-response protocol so when you request something in your browser by clicking a link or writing the name of a webpage you submit a HTTP request. The server then returns a response to the client.
 
 • Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
+	o HTTP is a part of the process layer in the TCP/IP model. This layer is responsible for the communication between units such as client and servers.  
